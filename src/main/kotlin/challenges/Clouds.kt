@@ -5,18 +5,17 @@ class Clouds {
 
         var numberOfJumps = 0
         val sizeOfArray = arrayOfClouds.size
-        val indexOfCloud = 0
-        while (indexOfCloud < sizeOfArray) {
+        var indexOfCloud = 0
+        while (indexOfCloud < sizeOfArray - 1) {
 
-            if (indexOfCloud < sizeOfArray - 1) {
-                if (arrayOfClouds[indexOfCloud] == 0) {
-
-                }
-
+            numberOfJumps++
+            if (indexOfCloud < sizeOfArray - 2 && arrayOfClouds[indexOfCloud + 2] == 0) {
+                indexOfCloud += 2
+            } else {
+                indexOfCloud++
             }
         }
-
-        return 0
+        return numberOfJumps
     }
 
 }
