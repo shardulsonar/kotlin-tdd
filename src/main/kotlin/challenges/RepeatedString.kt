@@ -1,26 +1,14 @@
 package challenges
 
 class RepeatedString {
-    fun getRepeatedCharacter(string: String, numberOfTimesRepeated: Int): Int {
+    fun getRepeatedCharacter(string: String, numberOfChars: Long): Long {
 
-        var repeatedString = ""
-        var index = 0
-        var result = 0
-        while (index < numberOfTimesRepeated) {
-            if (numberOfTimesRepeated - 1 - index >= string.length) {
-                repeatedString = repeatedString.plus(string)
-                index += string.length
-            } else {
-                repeatedString = repeatedString.plus(string.substring(0, numberOfTimesRepeated - index))
-                index += numberOfTimesRepeated - index
-            }
-        }
-        repeatedString.toCharArray().forEach {char ->
-            if (char.equals("a"))
-                result++
-        }
-        return result
+        val countOfAInString: Long = string.count { char: Char -> char == 'a' }.toLong()
+        val mod: Long = numberOfChars % string.length
+        val numberOfTimesStringRepeated: Long = numberOfChars / string.length
 
+        val result: Long = countOfAInString * numberOfTimesStringRepeated + (string.substring(0, mod.toInt()).count { char: Char -> char == 'a' }.toLong())
+
+        return  result
     }
-
 }
